@@ -63,61 +63,61 @@ const QuizScreen = () => {
   return (
     <>
       <ScrollView>
-        <View style={{ flex: 1 }}>
-          <View style={[{ flex: 1, backgroundColor: blue, }]}>
-            <View style={styles.headerContainer}>
-              <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', columnGap: 5 }}>
-                <TouchableOpacity>
-                  <Ionicons size={25} color={white} name="arrow-back" />
-                </TouchableOpacity>
-                <Text style={{ fontSize: 20, fontWeight: "600", color: white }}>UX</Text>
-              </View>
-              <Image
-                style={styles.image}
-                source={{ uri: "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm328-366-tong-08_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6a37204762fdd64612ec2ca289977b5e" }} />
+
+        <View style={[{ flex: 1, backgroundColor: blue, }]}>
+          <View style={styles.headerContainer}>
+            <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', columnGap: 5 }}>
+              <TouchableOpacity>
+                <Ionicons size={25} color={white} name="arrow-back" />
+              </TouchableOpacity>
+              <Text style={{ fontSize: 20, fontWeight: "600", color: white }}>UX</Text>
+            </View>
+            <Image
+              style={styles.image}
+              source={{ uri: "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm328-366-tong-08_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6a37204762fdd64612ec2ca289977b5e" }} />
+          </View>
+
+          <View style={styles.contentWrapper}>
+
+            <View style={styles.tabBar}>
+              <FlatList
+                horizontal={true}
+                data={data}
+                renderItem={({ item, index }) => <Pressable>
+                  <Text onPress={() => handleTab(index + 1)} style={[styles.tabBtn, active == (index + 1) ? styles.slActive : ""]}>{index + 1}</Text>
+                </Pressable>}
+              />
             </View>
 
-            <View style={styles.contentWrapper}>
 
-              <View style={styles.tabBar}>
-                <FlatList
-                  horizontal={true}
-                  data={data}
-                  renderItem={({ item, index }) => <Pressable>
-                    <Text onPress={() => handleTab(index + 1)} style={[styles.tabBtn, active == (index + 1) ? styles.slActive : ""]}>{index + 1}</Text>
-                  </Pressable>}
-                />
-              </View>
-
-
-              <View>
-                <FlatList
-                  data={data}
-                  renderItem={({ item, index }) => <Q1Route item={item} />}
-                  keyExtractor={({ i, index }) => index}
-                />
-              </View>
-
-
-
-
-
+            <View>
+              <FlatList
+                data={data}
+                renderItem={({ item, index }) => <Q1Route item={item} />}
+                keyExtractor={({ i, index }) => index}
+              />
             </View>
+
+
+
+
 
           </View>
 
-          <View style={styles.btnWrapper}>
-            <Pressable>
-              <FontAwesome style={styles.btnIcon} size={20} color='white' name="angle-left" />
-            </Pressable>
-            <Pressable>
-              <Text style={styles.submitBtn}>Submit Quiz</Text>
-            </Pressable>
-            <Pressable>
-              <FontAwesome style={styles.btnIcon} size={20} color='white' name="angle-right" />
-            </Pressable>
-          </View>
-   </View>
+        </View>
+
+        <View style={styles.btnWrapper}>
+          <Pressable>
+            <FontAwesome style={styles.btnIcon} size={20} color='white' name="angle-left" />
+          </Pressable>
+          <Pressable>
+            <Text style={styles.submitBtn}>Submit Quiz</Text>
+          </Pressable>
+          <Pressable>
+            <FontAwesome style={styles.btnIcon} size={20} color='white' name="angle-right" />
+          </Pressable>
+        </View>
+
 
       </ScrollView>
     </>
@@ -208,9 +208,6 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: 'center',
     columnGap: 20,
-    position: "absolute",
-    bottom: 30,
-    left: 20
   },
 
   submitBtn: {

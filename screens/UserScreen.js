@@ -4,7 +4,7 @@ import { Text, View } from 'react-native'
 const UserScreen = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>User</Text>
     </View>
   )
 }
