@@ -3,30 +3,35 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import LoginScreen from './screens/LoginScreen';
 import HomeScreen from './screens/HomeScreen';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import RegisterScreen from './screens/RegisterScreen';
+import QuizRuleScreen from './screens/QuizRuleScreen';
+import QuizScreen from './screens/QuizScreen';
 
 const Stack = createNativeStackNavigator();
 
-
 function App() {
+  const token = true
+
 
   return (
     <>
-      
+
       <NavigationContainer>
         <Stack.Navigator
-          screenOptions={{
-            headerShown: false
-          }}
+          initialRouteName={token ? 'Home' : 'Login'}
+          screenOptions={({ route }) => ({
+            headerShown:false
+          })}
         >
+          <Stack.Screen name='Login' component={LoginScreen}/>
           <Stack.Screen name='Home' component={HomeScreen} />
-          <Stack.Screen name='Login' component={LoginScreen} />
+          <Stack.Screen name='QuizRule' component={QuizRuleScreen} />
+          <Stack.Screen name='Quiz' component={QuizScreen} />
+          <Stack.Screen name='Register' component={RegisterScreen} />
         </Stack.Navigator>
       </NavigationContainer>
 
-   
+
 
     </>
   );

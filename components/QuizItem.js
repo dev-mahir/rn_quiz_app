@@ -2,7 +2,6 @@ import React from 'react';
 import { View, Image, StyleSheet, Text } from 'react-native'
 import { blue } from '../constants/color';
 import Icon from 'react-native-vector-icons/FontAwesome';
-import Clock from 'react-native-vector-icons/AntDesign';
 
 const QuizItem = () => {
   return (
@@ -16,7 +15,6 @@ const QuizItem = () => {
           <Text style={styles.title}>Quz1</Text>
           <View style={styles.icon}>
             <Icon name="book" size={18} color="gray" />
-
             <Text style={{ color: "#696969", fontSize: 17 }}>10 Question</Text>
           </View>
           <View style={styles.icon}>
@@ -28,7 +26,7 @@ const QuizItem = () => {
 
       <View>
         <View style={styles.icon}>
-          <Clock name="clockcircleo" size={20} color="#f2c94c" />
+          <Icon name="heart" size={20} color="#f2c94c" />
           <Text style={styles.title}>4.8</Text>
         </View>
       </View>

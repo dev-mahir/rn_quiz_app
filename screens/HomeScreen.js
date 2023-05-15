@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
-import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, FlatList } from 'react-native'
+import { Dimensions, Image, ScrollView, StyleSheet, Text, TouchableOpacity, View, Button, FlatList, Pressable } from 'react-native'
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { blue, white } from '../constants/color';
 import Search from '../components/Search';
 import QuizItem from '../components/QuizItem';
+import ContinueQuiz from '../components/ContinueQuiz';
 
 
 const postCat = ["Popular", "Science", "HTML", "Javascript", "CSS3"]
 
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }) => {
   const [active, setActive] = useState('Popular');
 
   const handleTab = (item) => {
@@ -20,7 +21,7 @@ const HomeScreen = () => {
 
 
 
-  console.warn(active);
+
 
 
   return (
@@ -35,9 +36,16 @@ const HomeScreen = () => {
                 <Icon size={25} color={white} name="align-left" />
               </TouchableOpacity>
             </View>
-            <Image
+
+
+            {/* <Image
               style={styles.image}
-              source={{ uri: "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm328-366-tong-08_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6a37204762fdd64612ec2ca289977b5e" }} />
+              source={{ uri: "https://img.rawpixel.com/s3fs-private/rawpixel_images/website_content/rm328-366-tong-08_1.jpg?w=800&dpr=1&fit=default&crop=default&q=65&vib=3&con=3&usm=15&bg=F4F4F3&ixlib=js-2.2.1&s=6a37204762fdd64612ec2ca289977b5e" }} /> */}
+
+            <Pressable onPress={() => navigation.navigate('Login')}>
+              <Text style={styles.loginBtn}>Login</Text>
+            </Pressable>
+
 
           </View>
 
@@ -65,11 +73,17 @@ const HomeScreen = () => {
               />
             </View>
 
-            <QuizItem />
-            <QuizItem />
-            <QuizItem />
-            <QuizItem />
-            <Text style={{fontSize: 20, color : 'black'}}>Continue Quiz</Text>
+            <View style={{ flex: 1, rowGap: 15 }}>
+         
+              <Pressable onPress={() => navigation.navigate('QuizRule')}>
+                <QuizItem />
+             </Pressable>
+            </View>
+            <Text style={{ fontSize: 20, color: 'black', marginTop: 20, marginBottom: 15, fontWeight: "500" }}>Continue Quiz</Text>
+            <View style={{ flex: 1, rowGap: 15 }}>
+              <ContinueQuiz />
+              <ContinueQuiz />
+            </View>
 
 
           </View>
@@ -87,6 +101,11 @@ const HomeScreen = () => {
 
 
 const styles = StyleSheet.create({
+  loginBtn: {
+    color: white,
+    fontWeight: "500",
+    fontSize: 18
+  },
   heightFull: {
     height: Dimensions.get('window').height
   },
@@ -105,13 +124,13 @@ const styles = StyleSheet.create({
   },
   contentWrapper: {
     backgroundColor: "white",
-    borderTopLeftRadius: 15,
-    borderTopRightRadius: 15,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     paddingHorizontal: 15,
     paddingVertical: 30
   },
   tabBtn: {
-    fontSize: 18,
+    fontSize: 15,
     color: "gray",
     paddingHorizontal: 15,
 
