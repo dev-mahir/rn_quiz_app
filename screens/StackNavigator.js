@@ -8,6 +8,7 @@ import {View, Text, Button } from 'react-native'
 import HomeScreen from './HomeScreen';
 import { NavigationContainer } from '@react-navigation/native';
 import UserScreen from './UserScreen';
+import SearchScreen from './SearchScreen';
 
 
 const Tab = createBottomTabNavigator();
@@ -31,8 +32,9 @@ const StackNavigator = () => {
             headerStyle: {
               backgroundColor: '#003580',
               height: 80,
+              borderBottomColor: 'transparent',
+              shadowColor: 'transparent',
             },
-
             tabBarIcon: ({ focused }) => focused ? <FontAwesome color="#003580" size={20} name='home' /> : <Ionicons color="black" size={20} name='home-outline' />,
           }}
         />
@@ -56,6 +58,7 @@ const StackNavigator = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Main' component={BottomTabs} options={{ headerShown: false }} />
+        <Stack.Screen name='Search' component={SearchScreen} options={{ headerShown: false }} />
       </Stack.Navigator>
     </NavigationContainer>
   )
